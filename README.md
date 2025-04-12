@@ -4,7 +4,9 @@
 ## Step 1: Install prerequisites
 - Docker
 - Docker compose
-## Step 2: Run the command
+## Step 2 Kaggle key:
+Take kaggle.json from https://www.kaggle.com/settings (API->Create New Token) and drop into /app
+## Step 3: Run the command
 ```bash
 docker compose up 
 ```

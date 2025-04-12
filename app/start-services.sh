@@ -1,7 +1,7 @@
 #!/bin/bash
 # This will run only by the master node
 
-# starting HDFS daemons
+# starting HDFS daemons. those scripts start slave nodes
 $HADOOP_HOME/sbin/start-dfs.sh
 
 # starting Yarn daemons
@@ -11,7 +11,6 @@ $HADOOP_HOME/sbin/start-yarn.sh
 # Start mapreduce history server
 mapred --daemon start historyserver
 
-
 # track process IDs of services
 jps -lm
 
@@ -19,15 +18,15 @@ jps -lm
 # outputs a brief report on the overall HDFS filesystem
 hdfs dfsadmin -report
 
-# If namenode in safemode then leave it
-hdfs dfsadmin -safemode leave
+# Allow  writes. Option 'leave' didnt work sometimes
+hdfs dfsadmin -safemode forceExit
 
 # create a directory for spark apps in HDFS
 hdfs dfs -mkdir -p /apps/spark/jars
 hdfs dfs -chmod 744 /apps/spark/jars
 
 
-# Copy all jars to HDFS
+# Copy all ?jars to HDFS
 hdfs dfs -put /usr/local/spark/jars/* /apps/spark/jars/
 hdfs dfs -chmod +rx /apps/spark/jars/
 

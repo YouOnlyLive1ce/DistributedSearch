@@ -16,11 +16,16 @@ pip install -r requirements.txt
 venv-pack -o .venv.tar.gz
 
 # Collect data
-bash prepare_data.sh
+# bash prepare_data.sh
 
+# Run the indexer (not running automatically?)
+# bash index.sh
 
-# Run the indexer
-bash index.sh data/sample.txt
+# Fill cassandra db
+# bash create_tables.sh
 
 # Run the ranker
-bash search.sh "this is a query!"
+# bash search.sh "this is a query!"
+
+# do not stop cluster master docker
+tail -f /dev/null
