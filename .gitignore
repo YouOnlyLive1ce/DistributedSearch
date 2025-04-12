@@ -1,4 +1,3 @@
-*/kaggle.json
 *.parquet
 .venv.tar.gz
 data/*
